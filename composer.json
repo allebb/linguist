@@ -1,0 +1,24 @@
+{
+    "name": "ballen/linguist",
+    "version": "1.0.0",
+    "description": "Linguist is a PHP library for parsing strings and extracting prefixed words in content ideal for working with @mentions, #topics and even custom action tags.",
+    "type": "library",
+    "keywords": ["mentions", "topics", "tags", "twitter"],
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Bobby Allen",
+            "email": "ballen@bobbyallen.me",
+            "homepage": "http://bobbyallen.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ballen\\Linguist\\": "src/"
+        }
+    }
+}
