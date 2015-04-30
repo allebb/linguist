@@ -32,7 +32,6 @@ class Parser
         if (!isset($string)) {
             throw new InvalidArgumentException('The input string is required.');
         }
-
         $this->message = $string;
     }
 
@@ -51,7 +50,7 @@ class Parser
      */
     public function tags()
     {
-        return new Tags($this->gatherTags());
+        return $this->gatherTags();
     }
 
     /**
@@ -63,24 +62,45 @@ class Parser
     public function tag($name = null)
     {
         if (!is_null($name)) {
-            return $this->tags()->toArray()[$name];
+            return $this->tags()[$name];
         }
         throw new \InvalidArgumentException('A tag type was not specified!');
     }
 
+    /**
+     * Generates HTML output by adding HTML links to the tags.
+     * @return string
+     */
     public function html()
     {
         
     }
+    
+    /**
+     * Generate Markdown output by adding links to the tags.
+     * @return string
+     */
+    public function md(){
+        
+    }
+
+    /**
+     * Return the plan text version of the message (no HTML formatting etc.).
+     * @return string
+     */
+    public function plain()
+    {
+        return strip_tags($this->message);
+    }
 
     /**
      * Finds, returns and categorises all tags found in the message.
-     * @return type
+     * @return array
      */
     private function gatherTags()
     {
         foreach (array_keys($this->tags) as $tagtype) {
-            preg_match_all('/\s+' . $this->tags[$tagtype]['prefix'] . '(\w+)/', $this->message, $matches);
+            preg_match_all('/\s+' . $this->tags[$tagtype]['prefix'] . '(\w+)/', $this->plain($this->message), $matches);
             $tags[$tagtype] = $matches[1];
         }
         return $tags;
