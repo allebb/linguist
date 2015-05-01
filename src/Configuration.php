@@ -30,11 +30,15 @@ class Configuration
     private $default_configuration = [
         'mentions' => [
             'prefix' => '@',
-            'url' => 'https://twitter.com/%s'
+            'url' => 'https://twitter.com/%s',
+            'target' => true,
+            'class' => '',
         ],
         'topics' => [
             'prefix' => '#',
-            'url' => 'https://twitter.com/hashtag/%s&src=hash'
+            'url' => 'https://twitter.com/hashtag/%s&src=hash',
+            'target' => true,
+            'class' => '',
         ],
     ];
 
@@ -43,12 +47,16 @@ class Configuration
      * @param string $name The name of the tag eg. 'mentions'
      * @param string $prefix The tag prefix that we will search on eg. '@'
      * @param string $url_pattern The URL pattern to use when outputting to HTML. (use %s as the dynamic placeholder)
+     * @param boolean $target_blank Optionally request that the HTML link is opened in a new window (target=_blank)
+     * @param string $class Optional HTML class to be used in the HTML link.
      */
-    public function push($name, $prefix, $url_pattern)
+    public function push($name, $prefix, $url_pattern, $target_blank = false, $class = '')
     {
         $this->configuration[$name] = [
             'prefix' => $prefix,
             'url' => $url_pattern,
+            'target' => $target_blank,
+            'class' => '',
         ];
     }
 
