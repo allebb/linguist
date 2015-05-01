@@ -50,13 +50,13 @@ class Configuration
      * @param boolean $target_blank Optionally request that the HTML link is opened in a new window (target=_blank)
      * @param string $class Optional HTML class to be used in the HTML link.
      */
-    public function push($name, $prefix, $url_pattern, $target_blank = false, $class = '')
+    public function push($name, $prefix, $url_pattern, $target_blank = false, $class = null)
     {
         $this->configuration[$name] = [
             'prefix' => $prefix,
             'url' => $url_pattern,
             'target' => $target_blank,
-            'class' => '',
+            'class' => $class,
         ];
     }
 
