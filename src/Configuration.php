@@ -3,7 +3,26 @@
 class Configuration
 {
 
+    /**
+     * Runtime  storage for instance configuration.
+     * @var array
+     */
     private $configuration = [];
+
+    /**
+     * A default configuration (based on Twitter)
+     * @var array 
+     */
+    private $default_configuration = [
+        'mentions' => [
+            'prefix' => '@',
+            'url' => 'https://twitter.com/%s'
+        ],
+        'topics' => [
+            'prefix' => '#',
+            'url' => 'https://twitter.com/hashtag/%s&src=hash'
+        ],
+    ];
 
     /**
      * Push a tag configuraiton on to the configuration.
@@ -37,5 +56,14 @@ class Configuration
     public function get()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Load the 'default' configuration set (compatible with Twitter)
+     * @return void
+     */
+    public function loadDefault()
+    {
+        $this->configuration = $this->default_configuration;
     }
 }

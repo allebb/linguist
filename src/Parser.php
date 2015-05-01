@@ -1,56 +1,66 @@
 <?php namespace Ballen\Linguist;
 
-use InvalidArgumentException;
-use Ballen\Linguist\Entities\Tags;
+use Ballen\Linguist\Configuration as LinguistConfig;
+use Ballen\Linguist\Transformers\PlaintextTransformer;
+use Ballen\Linguist\Transformers\HtmlTransformer;
+use Ballen\Linguist\Transformers\MarkdownTansformer;
 
 class Parser
 {
 
+    /**
+     * The HTML link format.
+     */
     const HTML_HREF_FORMAT = "<a href=\"%s\">%s</a>";
-    
+
+    /**
+     * The Markdown link format.
+     */
     const MD_HREF_FORMAT = "[%s](%5)"; // Name of link, URL
-    
+
     /**
      * The original message text.
      * @var string
      */
+
     protected $message = '';
 
     /**
      * Tag name and character prefix.
-     * @var type 
+     * @var array
      */
-    private $tags = [
-        'mentions' => [
-            'prefix' => '@',
-            'url' => 'http://twitter.com/%s'
-        ],
-        'topics' => [
-            'prefix' => '#',
-            'url' => 'https://twitter.com/search?q=%s&src=hash'
-        ],
-    ];
+    private $tags = [];
 
-    public function __construct($string)
+    /**
+     * Class constructor
+     * @param string $string The string to parse.
+     * @param \Ballen\Linguist\Entities\Configuration $configuration Optional custom tag/url configuration
+     * @throws InvalidArgumentException
+     */
+    public function __construct($string, $configuration = null)
     {
+        if (!is_null($configuration)) {
+            $this->loadConfiguration((new Configuration())->loadDefault());
+        }
         if (!isset($string)) {
-            throw new InvalidArgumentException('The input string is required.');
+            throw new \InvalidArgumentException('The input string is required.');
         }
         $this->message = $string;
     }
 
     /**
-     * Set the tag configuration.
+     * Sets a custom tag/url configuration.
      * @param \Ballen\Linguist\Entities\Configuration $configuration
+     * @return void
      */
-    public function setConfiguration(\Ballen\Linguist\Configuration $configuration)
+    public function setConfiguration(LinguistConfig $configuration)
     {
         $this->tags = $configuration->get();
     }
 
     /**
      * Returns a Tag entities class.
-     * @return \Ballen\Linguist\Entities\Tags
+     * @return array
      */
     public function tags()
     {
@@ -78,7 +88,6 @@ class Parser
     public function html()
     {
         // Convert the text to HTML code.
-        
     }
 
     /**
@@ -88,7 +97,6 @@ class Parser
     public function md()
     {
         // Convert the text to Markdown code.
-        
     }
 
     /**
@@ -97,7 +105,7 @@ class Parser
      */
     public function plain()
     {
-        return strip_tags($this->message);
+        return new PlaintextTransformer($this->message);
     }
 
     /**
@@ -114,17 +122,26 @@ class Parser
     }
 
     /**
+     * Loads the configuration into the Parser object.
+     * @param Configuration $configuration
+     */
+    private function loadConfiguration(LinguistConfig $configuration)
+    {
+        $this->tags = $configuration->get();
+    }
+
+    /**
      * Magic method calls to enable users to call $this->mentions etc.
      * @param string $name
      * @param string $arguments
      * @return array
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function __call($name, $arguments)
     {
         $tags = array_keys($this->tags);
         if (!in_array($name, $tags)) {
-            throw new \RuntimeException('Invalid tag type(s) requested.');
+            throw new RuntimeException('Invalid tag type(s) requested.');
         }
         return $this->tag($name);
     }
