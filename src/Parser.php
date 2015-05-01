@@ -6,6 +6,10 @@ use Ballen\Linguist\Entities\Tags;
 class Parser
 {
 
+    const HTML_HREF_FORMAT = "<a href=\"%s\">%s</a>";
+    
+    const MD_HREF_FORMAT = "[%s](%5)"; // Name of link, URL
+    
     /**
      * The original message text.
      * @var string
@@ -73,19 +77,22 @@ class Parser
      */
     public function html()
     {
-        
-    }
-    
-    /**
-     * Generate Markdown output by adding links to the tags.
-     * @return string
-     */
-    public function md(){
+        // Convert the text to HTML code.
         
     }
 
     /**
-     * Return the plan text version of the message (no HTML formatting etc.).
+     * Generate Markdown output by adding links to the tags.
+     * @return string
+     */
+    public function md()
+    {
+        // Convert the text to Markdown code.
+        
+    }
+
+    /**
+     * Return the plan text version of the message removing all HTML formatting.
      * @return string
      */
     public function plain()
