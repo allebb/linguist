@@ -23,27 +23,16 @@ class Parser
 {
 
     /**
-     * The HTML link format.
+     * Runtime configuration object storeage.
+     * @var \Ballen\Linguist\Entities\Configuration
      */
-    const HTML_HREF_FORMAT = "<a href=\"%s\">%s</a>";
-
-    /**
-     * The Markdown link format.
-     */
-    const MD_HREF_FORMAT = "[%s](%5)"; // Name of link, URL
+    private $configuration;
 
     /**
      * The original message text.
      * @var string
      */
-
     protected $message = '';
-
-    /**
-     * Tag name and character prefix.
-     * @var array
-     */
-    private $tags = [];
 
     /**
      * Class constructor
@@ -69,7 +58,7 @@ class Parser
      */
     public function setConfiguration(LinguistConfig $configuration)
     {
-        $this->tags = $configuration->get();
+        $this->loadConfiguration($configuration);
     }
 
     /**
@@ -90,7 +79,7 @@ class Parser
     public function tag($name = null)
     {
         if (!is_null($name)) {
-            return $this->tags()[$name];
+            return $this->configuration->get()[$name];
         }
         throw new \InvalidArgumentException('A tag type was not specified!');
     }
@@ -101,7 +90,7 @@ class Parser
      */
     public function html()
     {
-        // Convert the text to HTML code.
+        return new PlaintextTransformer($this->message, $this->configuration);
     }
 
     /**
@@ -119,7 +108,7 @@ class Parser
      */
     public function plain()
     {
-        return new PlaintextTransformer($this->message);
+        return new PlaintextTransformer($this->message, $this->configuration);
     }
 
     /**
@@ -128,8 +117,9 @@ class Parser
      */
     private function gatherTags()
     {
-        foreach (array_keys($this->tags) as $tagtype) {
-            preg_match_all('/\s+' . $this->tags[$tagtype]['prefix'] . '(\w+)/', $this->plain($this->message), $matches);
+        $tag_configuration = $this->configuration->get();
+        foreach (array_keys($tag_configuration) as $tagtype) {
+            preg_match_all('/\s+' . $tag_configuration[$tagtype]['prefix'] . '(\w+)/', $this->plain($this->message), $matches);
             $tags[$tagtype] = $matches[1];
         }
         return $tags;
@@ -141,7 +131,7 @@ class Parser
      */
     private function loadConfiguration(LinguistConfig $configuration)
     {
-        $this->tags = $configuration->get();
+        $this->configuration = $configuration;
     }
 
     /**

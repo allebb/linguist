@@ -12,3 +12,6 @@ echo "<p><pre>{$example_string}</pre></p>";
 
 echo "<p>Using the <em>->plain()</em> method, we can clean up all the HTML tags and get the plaintext version:</p>";
 echo "<p><pre>{$plain_text_example->plain()}</pre></p>";
+
+echo "<p>We can then parse it back into HTML if we like too...</p>";
+echo "<p><pre>{$plain_text_example->html()}</pre></p>";
