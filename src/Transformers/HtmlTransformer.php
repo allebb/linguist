@@ -43,7 +43,7 @@ class HtmlTransformer extends Transformer implements TransformerInterface
      * Builds the HTML link replacement for the HTML transformation.
      * @param string $link The URL
      * @param string $text The name of the link
-     * @param type $tag
+     * @param array $tag
      * @return type
      */
     private function buildHtmlLink($link, $text, $tag)
