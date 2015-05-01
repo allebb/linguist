@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 use Ballen\Linguist\Parser as TagParser;
 use Ballen\Linguist\Configuration as TagConfiguration;
 
-$example_string = "Hey <a href=\"https://twitter.com/bobsta63\">@bobsta63</a>, I just wanted to say <a href=\"https://twitter.com/freebsd\">@freebsd</a>.... that this #example is pretty simple using <a href=\"https://twitter.com/php\">@php</a>. <a href=\"https://twitter.com/hashtag/demo?src=hash\">#demo</a> <a href=\"https://twitter.com/hashtag/testing?src=hash\">#testing</a> <a href=\"https://twitter.com/hashtag/example?src=hash\">#example</a>.";
+$example_string = "Hey <a href=\"https://twitter.com/bobsta63\">@bobsta63</a>, I just wanted to say <a href=\"https://twitter.com/freebsd\">@freebsd</a>.... that this #example is pretty simple using <a href=\"https://twitter.com/php\">@php</a>. <a href=\"https://twitter.com/hashtag/demo?src=hash\">#demo</a> <a href=\"https://twitter.com/hashtag/testing?src=hash\">#testing</a> <a href=\"https://twitter.com/hashtag/example?src=hash\">#example</a>. Check this out ya'll http://bbc.in/123dd and secure links like https://myftphost.co.uk/example/";
 
 $plain_text_example = new TagParser($example_string);
 
