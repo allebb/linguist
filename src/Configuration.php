@@ -32,13 +32,13 @@ class Configuration
             'prefix' => '@',
             'url' => 'https://twitter.com/%s',
             'target' => true,
-            'class' => '',
+            'class' => null,
         ],
         'topics' => [
             'prefix' => '#',
             'url' => 'https://twitter.com/hashtag/%s&src=hash',
             'target' => true,
-            'class' => '',
+            'class' => null,
         ],
     ];
 

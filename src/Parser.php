@@ -94,14 +94,14 @@ class Parser
      */
     public function html()
     {
-        return new PlaintextTransformer($this->message, $this->configuration);
+        return new HtmlTransformer($this->plain($this->message), $this->configuration);
     }
 
     /**
      * Generate Markdown output by adding links to the tags.
      * @return string
      */
-    public function md()
+    public function markdown()
     {
         // Convert the text to Markdown code.
     }

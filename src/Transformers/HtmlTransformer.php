@@ -30,6 +30,41 @@ class HtmlTransformer extends Transformer implements TransformerInterface
      */
     private function transform($string)
     {
-        $this->formatted = '';
+        foreach (array_keys($this->tags) as $tagtype) {
+            $tagconf = $this->tags[$tagtype];
+            $string = preg_replace_callback('/\s+' . $this->tags[$tagtype]['prefix'] . '(\w+)/', function($matches) use ($tagconf) {
+                return ' ' . trim($this->buildHtmlLink($matches[1], trim($matches[0]), $tagconf));
+            }, $string);
+        }
+        $this->formatted = $string;
+    }
+
+    /**
+     * Builds the HTML link replacement for the HTML transformation.
+     * @param string $link The URL
+     * @param string $text The name of the link
+     * @param type $tag
+     * @return type
+     */
+    private function buildHtmlLink($link, $text, $tag)
+    {
+        if (!is_null($link)) {
+            $link = sprintf($tag['url'], $link);
+            $html_link = "<a href=\"{$link}\"";
+
+            // Add the class tag if one is available.
+            if (!is_null($tag['class'])) {
+                $html_link .= " class=\"{$tag['class']}\"";
+            }
+
+            // Add the target="_blank" attribute if the user requires it!
+            if ($tag['target']) {
+                $html_link .=" target=\"_blank\"";
+            }
+
+            $html_link .= ">{$text}</a>";
+            return $html_link;
+        }
+        return $text;
     }
 }
