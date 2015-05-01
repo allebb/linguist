@@ -1,5 +1,7 @@
 <?php namespace Ballen\Linguist\Transformers;
 
+use Ballen\Linguist\Configuration;
+
 /**
  * Linguist
  *
@@ -22,13 +24,21 @@ trait TransformerInitTrait
      * @var string
      */
     protected $formatted = '';
+    
+    /**
+     * The tag configuration.
+     * @var array 
+     */
+    protected $tags;
 
     /**
      * Class constructor
      * @param string $string The string of which to be converted/transformed.
+     * @param Ballen\Linguist\Configuration $configuration The tag configuration.
      */
-    public function __construct($string)
+    public function __construct($string, Configuration $configuration)
     {
+        $this->tags = $configuration->get();
         $this->transform($string);
     }
 }

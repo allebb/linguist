@@ -1,6 +1,6 @@
 <?php namespace Ballen\Linguist;
 
-use Ballen\Linguist\Configuration as LinguistConfig;
+use Ballen\Linguist\Configuration;
 use Ballen\Linguist\Transformers\PlaintextTransformer;
 use Ballen\Linguist\Transformers\HtmlTransformer;
 use Ballen\Linguist\Transformers\MarkdownTansformer;
@@ -37,26 +37,30 @@ class Parser
     /**
      * Class constructor
      * @param string $string The string to parse.
-     * @param \Ballen\Linguist\Entities\Configuration $configuration Optional custom tag/url configuration
+     * @param \Ballen\Linguist\Configuration $configuration Optional custom tag/url configuration
      * @throws InvalidArgumentException
      */
     public function __construct($string, $configuration = null)
     {
-        if (!is_null($configuration)) {
-            $this->loadConfiguration((new Configuration())->loadDefault());
+        if (is_null($configuration)) {
+            $configuration = new Configuration;
+            $configuration->loadDefault();
         }
+        $this->loadConfiguration($configuration);
+
         if (!isset($string)) {
             throw new \InvalidArgumentException('The input string is required.');
         }
+
         $this->message = $string;
     }
 
     /**
      * Sets a custom tag/url configuration.
-     * @param \Ballen\Linguist\Entities\Configuration $configuration
+     * @param \Ballen\Linguist\Configuration $configuration
      * @return void
      */
-    public function setConfiguration(LinguistConfig $configuration)
+    public function setConfiguration(Configuration $configuration)
     {
         $this->loadConfiguration($configuration);
     }
@@ -129,7 +133,7 @@ class Parser
      * Loads the configuration into the Parser object.
      * @param Configuration $configuration
      */
-    private function loadConfiguration(LinguistConfig $configuration)
+    private function loadConfiguration(Configuration $configuration)
     {
         $this->configuration = $configuration;
     }
