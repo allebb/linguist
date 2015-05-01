@@ -30,6 +30,28 @@ class MarkdownTansformer extends Transformer implements TransformerInterface
      */
     private function transform($string)
     {
-        $this->formatted = '';
+        foreach (array_keys($this->tags) as $tagtype) {
+            $tagconf = $this->tags[$tagtype];
+            $string = preg_replace_callback('/\s+' . $this->tags[$tagtype]['prefix'] . '(\w+)/', function($matches) use ($tagconf) {
+                return ' ' . trim($this->buildMarkdownLink($matches[1], trim($matches[0]), $tagconf));
+            }, $string);
+        }
+        $this->formatted = $string;
+    }
+
+    /**
+     * Builds the Mardown link replacement for the Markdown transformation.
+     * @param string $link The URL
+     * @param string $text The name of the link
+     * @param array $tag
+     * @return type
+     */
+    private function buildMarkdownLink($link, $text, $tag)
+    {
+        if (!is_null($link)) {
+            $link = sprintf($tag['url'], $link);
+            return "[{$link}]({$text})";
+        }
+        return $text;
     }
 }
