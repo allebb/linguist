@@ -7,11 +7,14 @@ $example_string = "Hey <a href=\"https://twitter.com/bobsta63\">@bobsta63</a>, I
 
 $plain_text_example = new TagParser($example_string);
 
-echo "<p>The original (HTML) input string:</p>";
+echo "<p>The original (HTML) input string that we are using for this example is:</p>";
 echo "<p><pre>{$example_string}</pre></p>";
 
-echo "<p>Using the <em>->plain()</em> method, we can clean up all the HTML tags and get the plaintext version:</p>";
+echo "<p>Using the <em>->plain();</em> method, we can clean up all the HTML tags and get the plaintext only version:</p>";
 echo "<p><pre>{$plain_text_example->plain()}</pre></p>";
 
 echo "<p>We can then parse it back into HTML if we like too...</p>";
 echo "<p><pre>{$plain_text_example->html()}</pre></p>";
+
+echo "<p>Want to output the string to Markdown instead? No problem, hit it like so...</p>";
+echo "<p><pre>{$plain_text_example->markdown()}</pre></p>";

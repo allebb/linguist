@@ -103,7 +103,7 @@ class Parser
      */
     public function markdown()
     {
-        // Convert the text to Markdown code.
+        return new MarkdownTansformer($this->plain($this->message), $this->configuration);
     }
 
     /**
