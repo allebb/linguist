@@ -1,7 +1,5 @@
 <?php
-
 require '../vendor/autoload.php';
-
 use Ballen\Linguist\Parser as TagParser;
 use Ballen\Linguist\Configuration as TagConfiguration;
 

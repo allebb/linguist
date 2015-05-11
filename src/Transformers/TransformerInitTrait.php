@@ -24,7 +24,7 @@ trait TransformerInitTrait
      * @var string
      */
     protected $formatted = '';
-    
+
     /**
      * The tag configuration.
      * @var array 

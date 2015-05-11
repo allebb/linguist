@@ -31,7 +31,7 @@ abstract class Transformer
 
     /**
      * Strips HTML tags from the given string.
-     * @param string $string The string that does/may contain HTML tags.
+     * @param string $message The string that does/may contain HTML tags.
      * @return string
      */
     protected function stripHtml($message)

@@ -32,7 +32,7 @@ class HtmlTransformer extends Transformer implements TransformerInterface
     {
 
         $string = preg_replace("/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/", "<a href=\"$0\">$0</a> ", $string);
-        
+
         foreach (array_keys($this->tags) as $tagtype) {
             $tagconf = $this->tags[$tagtype];
             $string = preg_replace_callback('/\s+' . $this->tags[$tagtype]['prefix'] . '(\w+)/', function($matches) use ($tagconf) {
@@ -48,9 +48,7 @@ class HtmlTransformer extends Transformer implements TransformerInterface
      * @param string $link The URL
      * @param string $text The name of the link
      * @param array $tag
-
-
-     * @return type
+     * @return string
      */
     private function buildHtmlLink($link, $text, $tag)
     {
