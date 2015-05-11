@@ -34,7 +34,7 @@ trait TransformerInitTrait
     /**
      * Class constructor
      * @param string $string The string of which to be converted/transformed.
-     * @param Ballen\Linguist\Configuration $configuration The tag configuration.
+     * @param Configuration $configuration The tag configuration.
      */
     public function __construct($string, Configuration $configuration)
     {

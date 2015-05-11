@@ -90,7 +90,7 @@ class Parser
 
     /**
      * Generates HTML output by adding HTML links to the tags.
-     * @return string
+     * @return HtmlTransformer
      */
     public function html()
     {
@@ -99,7 +99,7 @@ class Parser
 
     /**
      * Generate Markdown output by adding links to the tags.
-     * @return string
+     * @return MarkdownTansformer
      */
     public function markdown()
     {
@@ -108,7 +108,7 @@ class Parser
 
     /**
      * Return the plan text version of the message removing all HTML formatting.
-     * @return string
+     * @return PlaintextTransformer
      */
     public function plain()
     {

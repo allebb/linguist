@@ -63,7 +63,7 @@ class HtmlTransformer extends Transformer implements TransformerInterface
 
             // Add the target="_blank" attribute if the user requires it!
             if ($tag['target']) {
-                $html_link .=" target=\"_blank\"";
+                $html_link .= " target=\"_blank\"";
             }
 
             $html_link .= ">{$text}</a>";
