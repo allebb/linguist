@@ -36,7 +36,7 @@ class Configuration
         ],
         'topics' => [
             'prefix' => '#',
-            'url' => 'https://twitter.com/hashtag/%s&src=hash',
+            'url' => 'https://twitter.com/hashtag/%s',
             'target' => true,
             'class' => null,
         ],

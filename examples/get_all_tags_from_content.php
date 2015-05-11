@@ -14,7 +14,7 @@ $custom_tags = new TagConfiguration;
 $custom_tags->push('assignments', 'assign:', 'http://mysite.com/agent/%s');
 $custom_tags->push('priority', '!', null);
 $custom_tags->push('mentions', '@', 'http://mysite.com/agent/%s');
-$custom_tags->push('topics', '#', 'http://myself.com/search?topic=%s');
+$custom_tags->push('topics', '#', 'http://mysite.com/search?topic=%s');
 $tags->setConfiguration($custom_tags);
 
 // Dump ALL tags that we identified...
