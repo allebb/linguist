@@ -26,4 +26,12 @@ class ParserTest extends PHPUnit_Framework_TestCase
     {
         
     }
+    
+    public function testExample(){
+        return $this->assertTrue(true);
+    }
+    
+    public function testExample2(){
+        return $this->assertNotTrue(false);
+    }
 }
