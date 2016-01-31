@@ -1,6 +1,8 @@
 <?php
-use Ballen\Linguist\Parser as TagParser;
-use Ballen\Linguist\Configuration as TagConfiguration;
+use \PHPUnit_Framework_TestCase;
+//use Ballen\Linguist\Parser as TagParser;
+//use Ballen\Linguist\Configuration as TagConfiguration;
+
 /**
  * Linguist
  *
@@ -14,17 +16,10 @@ use Ballen\Linguist\Configuration as TagConfiguration;
  * @link http://www.bobbyallen.me
  *
  */
-use \PHPUnit_Framework_TestCase;
-
 class ParserTest extends PHPUnit_Framework_TestCase
 {
 
     const EXAMPLE_TWEET_1 = "Hey @bobsta63, this example is for parsing plain-text tweet strings into HTML right? #questions #howto";
-
-    public function __construct()
-    {
-        
-    }
 
     public function testExample()
     {

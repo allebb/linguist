@@ -142,11 +142,10 @@ class Parser
     /**
      * Magic method calls to enable users to call $this->mentions etc.
      * @param string $name
-     * @param string $arguments
      * @return array
      * @throws RuntimeException
      */
-    public function __call($name, $arguments)
+    public function __call($name)
     {
         $tags = array_keys($this->tags);
         if (!in_array($name, $tags)) {
