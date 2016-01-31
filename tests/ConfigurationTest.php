@@ -1,5 +1,4 @@
 <?php
-use \PHPUnit_Framework_TestCase;
 use Ballen\Linguist\Configuration;
 
 /**
@@ -15,7 +14,7 @@ use Ballen\Linguist\Configuration;
  * @link http://www.bobbyallen.me
  *
  */
-class ConfigurationTest extends PHPUnit_Framework_TestCase
+class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
 
     /**

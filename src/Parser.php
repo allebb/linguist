@@ -48,11 +48,6 @@ class Parser
             $configuration->loadDefault();
         }
         $this->loadConfiguration($configuration);
-
-        if (!isset($string)) {
-            throw new \InvalidArgumentException('The input string is required.');
-        }
-
         $this->message = $string;
     }
 
@@ -67,23 +62,31 @@ class Parser
     }
 
     /**
-     * Returns a Tag entities class.
-     * @return array
+     * Return all or a single array of a certain type of tag
+     * @param string $type The tag name to return
+     * @return tarray
+     * @throws InvalidArgumentException
      */
-    public function tags()
+    public function tags($type = null)
     {
-        return $this->gatherTags();
+        if (!$type) {
+            return $this->gatherTags();
+        }
+        if (isset($this->gatherTags()[$type])) {
+            return $this->gatherTags()[$type];
+        }
+        throw new \InvalidArgumentException(sprintf('The tag "%s" is not registered!', $type));
     }
 
     /**
-     * Return a specific array of tags.
+     * Return the configuration for a specific tag.
      * @param string $name The tag name/type.
      * @return array
      * @throws InvalidArgumentException
      */
     public function tag($name = null)
     {
-        if (!is_null($name)) {
+        if (!is_null($name) && isset($this->configuration->get()[$name])) {
             return $this->configuration->get()[$name];
         }
         throw new \InvalidArgumentException('A tag type was not specified!');
@@ -142,10 +145,11 @@ class Parser
     /**
      * Magic method calls to enable users to call $this->mentions etc.
      * @param string $name
+     * @param array $arguments
      * @return array
      * @throws RuntimeException
      */
-    public function __call($name)
+    public function __call($name, $arguments = [])
     {
         $tags = array_keys($this->tags);
         if (!in_array($name, $tags)) {
