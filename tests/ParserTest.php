@@ -1,37 +1,38 @@
 <?php
+use Ballen\Linguist\Parser as TagParser;
+use Ballen\Linguist\Configuration as TagConfiguration;
 /**
- * Distical
+ * Linguist
  *
- * Distical is a simple distance calculator library for PHP 5.3+ which
- * amongst other things can calculate the distance between two or more lat/long
- * co-ordinates.
+ * Linguist is a PHP library for parsing strings, it can extract and manipulate
+ *  prefixed words in content ideal for working with @mentions, #topics and
+ *  even custom action tags!
  *
  * @author Bobby Allen <ballen@bobbyallen.me>
- * @version 2.0.0
- * @license http://opensource.org/licenses/MIT
- * @link https://github.com/bobsta63/distical
+ * @license http://www.gnu.org/licenses/gpl-3.0.html
+ * @link https://github.com/bobsta63/linguist
  * @link http://www.bobbyallen.me
  *
  */
-use Ballen\Linguist\Parser as TagParser;
-use Ballen\Linguist\Configuration as TagConfiguration;
 use \PHPUnit_Framework_TestCase;
 
 class ParserTest extends PHPUnit_Framework_TestCase
 {
 
-    private $example_twitter = "Hey @bobsta63, this example is for parsing plain-text tweet strings into HTML right? #questions #howto";
+    const EXAMPLE_TWEET_1 = "Hey @bobsta63, this example is for parsing plain-text tweet strings into HTML right? #questions #howto";
 
     public function __construct()
     {
         
     }
-    
-    public function testExample(){
+
+    public function testExample()
+    {
         return $this->assertTrue(true);
     }
-    
-    public function testExample2(){
+
+    public function testExample2()
+    {
         return $this->assertNotTrue(false);
     }
 }
