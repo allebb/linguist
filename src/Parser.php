@@ -75,7 +75,7 @@ class Parser
         if (isset($this->gatherTags()[$type])) {
             return $this->gatherTags()[$type];
         }
-        throw new \InvalidArgumentException(sprintf('The tag "%s" is not registered!', $type));
+        throw new \InvalidArgumentException(sprintf('The tag "%s" has no results.', $type));
     }
 
     /**
@@ -84,12 +84,12 @@ class Parser
      * @return array
      * @throws InvalidArgumentException
      */
-    public function tag($name = null)
+    public function tag($name)
     {
-        if (!is_null($name) && isset($this->configuration->get()[$name])) {
+        if (isset($this->configuration->get()[$name])) {
             return $this->configuration->get()[$name];
         }
-        throw new \InvalidArgumentException('A tag type was not specified!');
+        throw new \InvalidArgumentException(sprintf('The tag "%s" is not registered!', $name));
     }
 
     /**

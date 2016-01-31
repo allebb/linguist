@@ -61,7 +61,14 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     public function testGetInvalidTagArray()
     {
         $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
-        $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" is not registered!');
+        $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" has no results.');
         $instance->tags('locations');
+    }
+    
+    public function testGetInvalidTagConfigurationArray()
+    {
+        $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
+        $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" is not registered!');
+        $instance->tag('locations');
     }
 }
