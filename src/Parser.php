@@ -151,10 +151,10 @@ class Parser
      */
     public function __call($name, $arguments = [])
     {
-        $tags = array_keys($this->tags);
+        $tags = array_keys($this->tags());
         if (!in_array($name, $tags)) {
-            throw new RuntimeException('Invalid tag type(s) requested.');
+            throw new \RuntimeException('Invalid tag type(s) requested.');
         }
-        return $this->tag($name);
+        return $this->tags($name);
     }
 }

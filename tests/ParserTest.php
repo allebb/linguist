@@ -19,6 +19,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 {
 
     const EXAMPLE_TWEET_1 = "Hey @bobsta63, this example is for parsing plain-text tweet strings into HTML right? #questions #howto";
+    const EXAMPLE_TWEET_2 = "An example support ticket reply, assign>bobby this will attempt to reassign this ticket example (to an agent who is called 'bobby').";
 
     public function testTwitterExampleToHtml()
     {
@@ -64,11 +65,40 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" has no results.');
         $instance->tags('locations');
     }
-    
+
     public function testGetInvalidTagConfigurationArray()
     {
         $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
         $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" is not registered!');
         $instance->tag('locations');
+    }
+
+    public function testSetCustomConfiguration()
+    {
+        $custom_config = new TagConfiguration();
+        $custom_config->push('assignment', 'assign>', 'https://exampleapp.com/assign/%s');
+        $instance = new TagParser(self::EXAMPLE_TWEET_2);
+        $instance->setConfiguration($custom_config);
+        $this->assertEquals(1, count($instance->tags('assignment')));
+        $this->assertEquals('bobby', $instance->tags('assignment')[0]);
+    }
+
+    public function testCallTagsUsingMagicMethod()
+    {
+        $custom_config = new TagConfiguration();
+        $custom_config->push('assignment', 'assign>', 'https://exampleapp.com/assign/%s');
+        $instance = new TagParser(self::EXAMPLE_TWEET_2);
+        $instance->setConfiguration($custom_config);
+        $this->assertEquals(1, count($instance->assignment()));
+        $this->assertEquals('bobby', $instance->assignment()[0]);
+    }
+
+    public function testCallTagsUsingInvalidTagMagicMethod()
+    {
+        $custom_config = new TagConfiguration();
+        $custom_config->loadDefault();
+        $instance = new TagParser(self::EXAMPLE_TWEET_1, $custom_config);
+        $this->setExpectedException('RuntimeException', 'Invalid tag type(s) requested.');
+        $this->assertEquals(1, count($instance->assignment()));
     }
 }
