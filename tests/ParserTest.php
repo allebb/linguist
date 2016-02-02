@@ -101,4 +101,14 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('RuntimeException', 'Invalid tag type(s) requested.');
         $this->assertEquals(1, count($instance->assignment()));
     }
+
+    public function testHtmlTransformerWithLink()
+    {
+
+        $custom_config = new TagConfiguration();
+        $custom_config->push('assignment', 'assign>', 'https://exampleapp.com/assign/%s', true, 'btn btn-link');
+        $instance = new TagParser(self::EXAMPLE_TWEET_2);
+        $instance->setConfiguration($custom_config);
+        $this->assertEquals('An example support ticket reply, <a href = "https://exampleapp.com/assign/bobby" class="btn btn-link" target="_blank">assign>bobby</a> this will attempt to reassign this ticket example (to an agent who is called \'bobby\').', $instance->html()->get());
+    }
 }

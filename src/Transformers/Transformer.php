@@ -19,18 +19,6 @@ abstract class Transformer
 {
 
     /**
-     * Validate that the transformer input is a string.
-     * @param string $string
-     * @throws \InvalidArgumentException
-     */
-    protected function validateInput($string)
-    {
-        if (!is_string($string)) {
-            throw new \InvalidArgumentException('The input must be of type string!');
-        }
-    }
-
-    /**
      * Strips HTML tags from the given string.
      * @param string $message The string that does/may contain HTML tags.
      * @return string

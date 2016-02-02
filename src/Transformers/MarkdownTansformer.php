@@ -52,10 +52,7 @@ class MarkdownTansformer extends Transformer implements TransformerInterface
      */
     private function buildMarkdownLink($link, $text, $tag)
     {
-        if (!is_null($link)) {
-            $link = sprintf($tag['url'], $link);
-            return "[{$link}]({$text})";
-        }
-        return $text;
+        $url = sprintf($tag['url'], $link);
+        return "[{$url}]({$text})";
     }
 }

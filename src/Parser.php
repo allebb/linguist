@@ -33,7 +33,7 @@ class Parser
      * The original message text.
      * @var string
      */
-    protected $message = '';
+    protected $message;
 
     /**
      * Class constructor
@@ -64,12 +64,12 @@ class Parser
     /**
      * Return all or a single array of a certain type of tag
      * @param string $type The tag name to return
-     * @return tarray
+     * @return array
      * @throws InvalidArgumentException
      */
     public function tags($type = null)
     {
-        if (!$type) {
+        if ($type === null) {
             return $this->gatherTags();
         }
         if (isset($this->gatherTags()[$type])) {
@@ -136,6 +136,7 @@ class Parser
     /**
      * Loads the configuration into the Parser object.
      * @param Configuration $configuration
+     * @return void
      */
     private function loadConfiguration(Configuration $configuration)
     {

@@ -1,4 +1,6 @@
-<?php namespace Ballen\Linguist\Transformers;
+<?php
+
+namespace Ballen\Linguist\Transformers;
 
 use Ballen\Linguist\Transformers\TransformerInitTrait;
 use Ballen\Linguist\Transformers\TransformerInterface;
@@ -51,23 +53,20 @@ class HtmlTransformer extends Transformer implements TransformerInterface
      */
     private function buildHtmlLink($link, $text, $tag)
     {
-        if (!is_null($link)) {
-            $link = sprintf($tag['url'], $link);
-            $html_link = "<a href = \"{$link}\"";
+        $url = sprintf($tag['url'], $link);
+        $html_link = "<a href = \"{$url}\"";
 
-            // Add the class tag if one is available.
-            if (!is_null($tag['class'])) {
-                $html_link .= " class=\"{$tag['class']}\"";
-            }
-
-            // Add the target="_blank" attribute if the user requires it!
-            if ($tag['target']) {
-                $html_link .= " target=\"_blank\"";
-            }
-
-            $html_link .= ">{$text}</a>";
-            return $html_link;
+        // Add the class tag if one is available.
+        if (!is_null($tag['class'])) {
+            $html_link .= " class=\"{$tag['class']}\"";
         }
-        return $text;
+
+        // Add the target="_blank" attribute if the user requires it!
+        if ($tag['target']) {
+            $html_link .= " target=\"_blank\"";
+        }
+
+        $html_link .= ">{$text}</a>";
+        return $html_link;
     }
 }
