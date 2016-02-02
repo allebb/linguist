@@ -35,7 +35,7 @@ Alternately you can add it to your ``composer.json`` file manually in the `requi
 ```php
 "ballen/linguist": "^1.0"
 ```
-Then install the package by running the ``composer update ballen/linquist`` command.
+Then install the package by running the ``composer update ballen/linguist`` command.
 
 Examples
 --------
