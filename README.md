@@ -7,24 +7,66 @@
 [![Latest Unstable Version](https://poser.pugx.org/ballen/linguist/v/unstable)](https://packagist.org/packages/ballen/linguist)
 [![License](https://poser.pugx.org/ballen/linguist/license)](https://packagist.org/packages/ballen/linguist)
 
-Linguist is a PHP library for parsing strings, it can extract and manipulate prefixed words in content ideal for working with @mentions, #topics and even custom action tags!
+Linguist is a PHP library for parsing strings, it can extract and manipulate prefixed words in content ideal for working with @mentions, #topics and custom tags!
 
 Requirements
 ------------
 
 * PHP >= 5.4.0
 
+This library is unit tested against PHP 5.4, 5.5, 5.6, 7.0 and HHVM!
+
 License
 -------
 
-This library is released under the [GPL v3 license](LICENSE).
+This client library is released under the [GPLv3](https://raw.githubusercontent.com/bobsta63/linguist/master/LICENSE) license, you are welcome to use it, improve it and contribute your changes back!
+
+Installation
+------------
+
+The recommended way of installing this library is via. [Composer](http://getcomposer.org); To install using Composer type the following command at the console:
+
+```shell
+composer require ballen/linguist
+```
+
+Alternately you can add it to your ``composer.json`` file manually in the `require` section like so:
+
+```php
+"ballen/linguist": "^1.0"
+```
+Then install the package by running the ``composer update ballen/linquist`` command.
 
 Examples
 --------
 
 A set of working examples can be found in the ``/examples`` directory.
 
+Tests and coverage
+------------------
+
+This library is fully unit tested using [PHPUnit](https://phpunit.de/).
+
+I use [TravisCI](https://travis-ci.org/) for continuous integration, which triggers tests for PHP 5.4, 5.5, 5.6, 7.0 and HHVM every time a commit is pushed.
+
+If you wish to run the tests yourself you should run the following:
+
+```shell
+# Install the Linguist Library with the 'development' packages this then includes PHPUnit!
+composer install --dev
+
+
+# Now we run the unit tests (from the root of the project) like so:
+./vendor/bin/phpunit
+```
+
+Code coverage can also be ran but requires XDebug installed...
+
+```shell
+./vendor/bin/phpunit --coverage-html ./report
+```
+
 Support
 -------
 
-I am happy to provide support via. my personal email address, so if you need a hand drop me an email at: [ballen@bobbyallen.me](mailto:ballen@bobbyallen.me).
+I am happy to provide support via. my personal email address, so if you need a hand drop me an email at: [ballen@bobbyallen.me]().
