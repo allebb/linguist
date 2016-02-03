@@ -19,7 +19,7 @@ This library is unit tested against PHP 5.4, 5.5, 5.6, 7.0 and HHVM!
 License
 -------
 
-This client library is released under the [GPLv3](https://raw.githubusercontent.com/bobsta63/linguist/master/LICENSE) license, you are welcome to use it, improve it and contribute your changes back!
+This library is released under the [GPLv3](https://raw.githubusercontent.com/bobsta63/linguist/master/LICENSE) license, you are welcome to use it, improve it and contribute your changes back!
 
 Installation
 ------------
