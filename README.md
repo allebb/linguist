@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/allebb/linguist.svg)](https://travis-ci.org/allebb/linguist)
 [![Code Coverage](https://scrutinizer-ci.com/g/allebb/linguist/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/allebb/linguist/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/allebb/linguist/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/allebb/linguist/?branch=master)
+[![Code Climate](https://codeclimate.com/github/allebb/linguist/badges/gpa.svg)](https://codeclimate.com/github/allebb/linguist)
 [![Latest Stable Version](https://poser.pugx.org/ballen/linguist/v/stable)](https://packagist.org/packages/ballen/linguist)
 [![Latest Unstable Version](https://poser.pugx.org/ballen/linguist/v/unstable)](https://packagist.org/packages/ballen/linguist)
 [![License](https://poser.pugx.org/ballen/linguist/license)](https://packagist.org/packages/ballen/linguist)
