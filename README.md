@@ -1,8 +1,8 @@
 # Linguist
 
-[![Build Status](https://travis-ci.org/bobsta63/linguist.svg)](https://travis-ci.org/bobsta63/linguist)
-[![Code Coverage](https://scrutinizer-ci.com/g/bobsta63/linguist/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bobsta63/linguist/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bobsta63/linguist/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bobsta63/linguist/?branch=master)
+[![Build Status](https://travis-ci.org/allebb/linguist.svg)](https://travis-ci.org/allebb/linguist)
+[![Code Coverage](https://scrutinizer-ci.com/g/allebb/linguist/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/allebb/linguist/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/allebb/linguist/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/allebb/linguist/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/ballen/linguist/v/stable)](https://packagist.org/packages/ballen/linguist)
 [![Latest Unstable Version](https://poser.pugx.org/ballen/linguist/v/unstable)](https://packagist.org/packages/ballen/linguist)
 [![License](https://poser.pugx.org/ballen/linguist/license)](https://packagist.org/packages/ballen/linguist)
