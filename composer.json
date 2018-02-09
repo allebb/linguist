@@ -3,7 +3,7 @@
     "description": "Linguist is a PHP library for parsing strings and extracting prefixed words in content ideal for working with @mentions, #topics and custom tags.",
     "type": "library",
     "keywords": ["mentions", "topics", "tags", "twitter"],
-    "license": "GPLv3",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Bobby Allen",
