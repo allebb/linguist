@@ -32,7 +32,7 @@ class MarkdownTansformer extends Transformer implements TransformerInterface
     private function transform($string)
     {
 
-        $string = preg_replace("/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/", "[$0]($0) ", $string);
+        $string = preg_replace(Transformer::URL_REGEX, "[$0]($0) ", $string);
 
         foreach (array_keys($this->tags) as $tagtype) {
             $tagconf = $this->tags[$tagtype];

@@ -15,7 +15,7 @@ Requirements
 
 * PHP >= 5.4.0
 
-This library is unit tested against PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3 and the PHP nightly builds!
+This library is unit tested against PHP 5.6, 7.0, 7.1, 7.2, 7.3 and 7.4!
 
 License
 -------
@@ -36,7 +36,7 @@ Alternately you can add it to your ``composer.json`` file manually in the `requi
 ```php
 "ballen/linguist": "^1.0"
 ```
-Then install the package by running the ``composer update ballen/linguist`` command.
+Then install the package by running the ``composer install`` command.
 
 Examples
 --------
@@ -48,7 +48,7 @@ Tests and coverage
 
 This library is fully unit tested using [PHPUnit](https://phpunit.de/).
 
-I use [TravisCI](https://travis-ci.org/) for continuous integration, which triggers tests for PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3 and the PHP nightly build every time a commit is pushed.
+I use [TravisCI](https://travis-ci.org/) for continuous integration, which triggers tests for PHP 55.6, 7.0, 7.1, 7.2, 7.3, 7.4 and the PHP nightly build every time a commit is pushed.
 
 If you wish to run the tests yourself you should run the following:
 

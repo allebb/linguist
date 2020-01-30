@@ -18,6 +18,8 @@ namespace Ballen\Linguist\Transformers;
 abstract class Transformer
 {
 
+    const URL_REGEX = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
     /**
      * Strips HTML tags from the given string.
      * @param string $message The string that does/may contain HTML tags.
