@@ -1,6 +1,8 @@
 <?php
+
 use Ballen\Linguist\Parser as TagParser;
 use Ballen\Linguist\Configuration as TagConfiguration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Linguist
@@ -11,11 +13,11 @@ use Ballen\Linguist\Configuration as TagConfiguration;
  *
  * @author Bobby Allen <ballen@bobbyallen.me>
  * @license http://www.gnu.org/licenses/gpl-3.0.html
- * @link https://github.com/bobsta63/linguist
+ * @link https://github.com/allebb/linguist
  * @link http://www.bobbyallen.me
  *
  */
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
 
     const EXAMPLE_TWEET_1 = "Hey @bobsta63, this example is for parsing plain-text tweet strings into HTML right? #questions #howto";
@@ -24,13 +26,19 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     public function testTwitterExampleToHtml()
     {
         $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
-        $this->assertEquals('Hey <a href = "https://twitter.com/bobsta63" target="_blank">@bobsta63</a>, this example is for parsing plain-text tweet strings into HTML right? <a href = "https://twitter.com/hashtag/questions" target="_blank">#questions</a> <a href = "https://twitter.com/hashtag/howto" target="_blank">#howto</a>', $instance->html()->get());
+        $this->assertEquals(
+            'Hey <a href = "https://twitter.com/bobsta63" target="_blank">@bobsta63</a>, this example is for parsing plain-text tweet strings into HTML right? <a href = "https://twitter.com/hashtag/questions" target="_blank">#questions</a> <a href = "https://twitter.com/hashtag/howto" target="_blank">#howto</a>',
+            $instance->html()->get()
+        );
     }
 
     public function testTwitterExampleToMarkdown()
     {
         $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
-        $this->assertEquals('Hey [https://twitter.com/bobsta63](@bobsta63), this example is for parsing plain-text tweet strings into HTML right? [https://twitter.com/hashtag/questions](#questions) [https://twitter.com/hashtag/howto](#howto)', $instance->markdown()->get());
+        $this->assertEquals(
+            'Hey [https://twitter.com/bobsta63](@bobsta63), this example is for parsing plain-text tweet strings into HTML right? [https://twitter.com/hashtag/questions](#questions) [https://twitter.com/hashtag/howto](#howto)',
+            $instance->markdown()->get()
+        );
     }
 
     public function testTwitterExampleGetMentions()
@@ -62,14 +70,14 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     public function testGetInvalidTagArray()
     {
         $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
-        $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" has no results.');
+        $this->expectException('\InvalidArgumentException', 'The tag "locations" has no results.');
         $instance->tags('locations');
     }
 
     public function testGetInvalidTagConfigurationArray()
     {
         $instance = new TagParser(self::EXAMPLE_TWEET_1, (new TagConfiguration)->loadDefault());
-        $this->setExpectedException('\InvalidArgumentException', 'The tag "locations" is not registered!');
+        $this->expectException('\InvalidArgumentException', 'The tag "locations" is not registered!');
         $instance->tag('locations');
     }
 
@@ -98,17 +106,19 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $custom_config = new TagConfiguration();
         $custom_config->loadDefault();
         $instance = new TagParser(self::EXAMPLE_TWEET_1, $custom_config);
-        $this->setExpectedException('RuntimeException', 'Invalid tag type(s) requested.');
+        $this->expectException('RuntimeException', 'Invalid tag type(s) requested.');
         $this->assertEquals(1, count($instance->assignment()));
     }
 
     public function testHtmlTransformerWithLink()
     {
-
         $custom_config = new TagConfiguration();
         $custom_config->push('assignment', 'assign>', 'https://exampleapp.com/assign/%s', true, 'btn btn-link');
         $instance = new TagParser(self::EXAMPLE_TWEET_2);
         $instance->setConfiguration($custom_config);
-        $this->assertEquals('An example support ticket reply, <a href = "https://exampleapp.com/assign/bobby" class="btn btn-link" target="_blank">assign>bobby</a> this will attempt to reassign this ticket example (to an agent who is called \'bobby\').', $instance->html()->get());
+        $this->assertEquals(
+            'An example support ticket reply, <a href = "https://exampleapp.com/assign/bobby" class="btn btn-link" target="_blank">assign>bobby</a> this will attempt to reassign this ticket example (to an agent who is called \'bobby\').',
+            $instance->html()->get()
+        );
     }
 }

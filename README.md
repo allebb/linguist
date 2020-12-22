@@ -15,7 +15,7 @@ Requirements
 
 * PHP >= 7.2.0
 
-This library is unit tested against PHP 7.2, 7.3 and 7.4!
+This library is unit tested against PHP 7.2, 7.3, 7.4 and 8.0!
 
 License
 -------
