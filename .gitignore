@@ -2,3 +2,5 @@
 /nbproject
 /vendor
 /report
+.phpunit.result.cache
+coverage.xml
