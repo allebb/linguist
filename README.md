@@ -1,7 +1,7 @@
 # Linguist
 
-[![Build Status](https://travis-ci.org/allebb/linguist.svg)](https://travis-ci.org/allebb/linguist)
-[![Code Coverage](https://scrutinizer-ci.com/g/allebb/linguist/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/allebb/linguist/?branch=master)
+[![Build](https://github.com/allebb/linguist/workflows/build/badge.svg)](https://github.com/allebb/linguist/actions)
+[![Code Coverage](https://codecov.io/gh/allebb/linguist/branch/master/graph/badge.svg)](https://codecov.io/gh/allebb/linguist)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/allebb/linguist/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/allebb/linguist/?branch=master)
 [![Code Climate](https://codeclimate.com/github/allebb/linguist/badges/gpa.svg)](https://codeclimate.com/github/allebb/linguist)
 [![Latest Stable Version](https://poser.pugx.org/ballen/linguist/v/stable)](https://packagist.org/packages/ballen/linguist)
@@ -13,14 +13,14 @@ Linguist is a PHP library for parsing strings, it can extract and manipulate pre
 Requirements
 ------------
 
-* PHP >= 5.4.0
+* PHP >= 7.2.0
 
-This library is unit tested against PHP 5.6, 7.0, 7.1, 7.2, 7.3 and 7.4!
+This library is unit tested against PHP 7.2, 7.3 and 7.4!
 
 License
 -------
 
-This library is released under the [GPLv3](https://raw.githubusercontent.com/bobsta63/linguist/master/LICENSE) license, you are welcome to use it, improve it and contribute your changes back!
+This library is released under the [GPLv3](https://raw.githubusercontent.com/allebb/linguist/master/LICENSE) license, you are welcome to use it, improve it and contribute your changes back!
 
 Installation
 ------------
@@ -30,13 +30,6 @@ The recommended way of installing this library is via. [Composer](http://getcomp
 ```shell
 composer require ballen/linguist
 ```
-
-Alternately you can add it to your ``composer.json`` file manually in the `require` section like so:
-
-```php
-"ballen/linguist": "^1.0"
-```
-Then install the package by running the ``composer install`` command.
 
 Examples
 --------
@@ -48,20 +41,19 @@ Tests and coverage
 
 This library is fully unit tested using [PHPUnit](https://phpunit.de/).
 
-I use [TravisCI](https://travis-ci.org/) for continuous integration, which triggers tests for PHP 55.6, 7.0, 7.1, 7.2, 7.3, 7.4 and the PHP nightly build every time a commit is pushed.
+I use [GitHub Actions](https://github.com/) for continuous integration, which triggers tests for PHP 7.2, 7.3, 7.4 every time a commit is pushed.
 
 If you wish to run the tests yourself you should run the following:
 
 ```shell
 # Install the Linguist Library with the 'development' packages this then includes PHPUnit!
-composer install --dev
-
+composer install
 
 # Now we run the unit tests (from the root of the project) like so:
 ./vendor/bin/phpunit
 ```
 
-Code coverage can also be ran but requires XDebug installed...
+Code coverage can also be run but requires XDebug installed...
 
 ```shell
 ./vendor/bin/phpunit --coverage-html ./report
