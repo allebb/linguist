@@ -48,7 +48,6 @@ jobs:
       #    memory_limit: 256M
 
       - name: PHPUnit Tests
-        continue-on-error: true
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload code coverage to Codecov
@@ -67,4 +66,5 @@ jobs:
 
       # Uploading reports for analysis
       - name: Uploading code coverage to scrutinize
+        continue-on-error: true
         run: php ocular.phar code-coverage:upload --format=php-clover coverage.xml
