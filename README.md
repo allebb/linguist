@@ -13,9 +13,9 @@ Linguist is a PHP library for parsing strings, it can extract and manipulate pre
 Requirements
 ------------
 
-* PHP >= 7.2.0
+* PHP >= 7.3.0
 
-This library is unit tested against PHP 7.2, 7.3, 7.4 and 8.0!
+This library is unit tested against PHP 7.3, 7.4 and 8.0!
 
 License
 -------
@@ -41,7 +41,7 @@ Tests and coverage
 
 This library is fully unit tested using [PHPUnit](https://phpunit.de/).
 
-I use [GitHub Actions](https://github.com/) for continuous integration, which triggers tests for PHP 7.2, 7.3, 7.4 every time a commit is pushed.
+I use [GitHub Actions](https://github.com/) for continuous integration, which triggers tests for PHP 7.3, 7.4 and 8.0 every time a commit is pushed.
 
 If you wish to run the tests yourself you should run the following:
 
