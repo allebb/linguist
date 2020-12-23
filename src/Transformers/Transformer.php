@@ -11,7 +11,7 @@ namespace Ballen\Linguist\Transformers;
  *
  * @author Bobby Allen <ballen@bobbyallen.me>
  * @license http://www.gnu.org/licenses/gpl-3.0.html
- * @link https://github.com/bobsta63/linguist
+ * @link https://github.com/allebb/linguist
  * @link http://www.bobbyallen.me
  *
  */
