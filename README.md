@@ -33,7 +33,7 @@ The recommended way of installing this library is via. [Composer](http://getcomp
 composer require ballen/linguist
 ```
 
-*If you need to use an older version of PHP, version 1.x.x supports PHP 5.6, 7.0, 7.1 and 7.2, you can install this version using Composer with this command instead:**
+**If you need to use an older version of PHP, version 1.x.x supports PHP 5.6, 7.0, 7.1 and 7.2, you can install this version using Composer with this command instead:**
 
 ```shell
 composer require ballen/linguist ^1.0
