@@ -2,7 +2,12 @@
     "name": "ballen/linguist",
     "description": "Linguist is a PHP library for parsing strings and extracting prefixed words in content ideal for working with @mentions, #topics and custom tags.",
     "type": "library",
-    "keywords": ["mentions", "topics", "tags", "twitter"],
+    "keywords": [
+        "mentions",
+        "topics",
+        "tags",
+        "twitter"
+    ],
     "license": "GPL-3.0-or-later",
     "authors": [
         {
@@ -13,7 +18,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3.0"
+        "php": "^7.3.0|^8.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0"
